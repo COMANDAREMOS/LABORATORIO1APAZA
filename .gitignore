@@ -1,0 +1,8 @@
+node_modules/
+test-results/
+playwright-report/
+sitio-presentacion/
+GUIA_PRESENTACION.md
+GUIA_VISUAL_LABORATORIO1APAZA.pdf
+postprueba
+*.log

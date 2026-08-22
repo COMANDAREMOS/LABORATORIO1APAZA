@@ -1,0 +1,78 @@
+{
+  "info": {
+    "_postman_id": "af3d4758-366c-4bc5-9dc9-efcc757be002",
+    "name": "Ejercicio 4 - Prueba de integración",
+    "description": "Verifica que el post 1 exista y que todos sus comentarios tengan postId igual a 1.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Obtener post 1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"La respuesta del post tiene estado 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"El post obtenido tiene id 1\", function () {",
+              "    const post = pm.response.json();",
+              "    pm.expect(post.id).to.eql(1);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/1",
+          "protocol": "https",
+          "host": ["jsonplaceholder", "typicode", "com"],
+          "path": ["posts", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener comentarios del post 1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"La respuesta de comentarios tiene estado 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Todos los comentarios pertenecen al post 1\", function () {",
+              "    const comentarios = pm.response.json();",
+              "    pm.expect(comentarios).to.be.an(\"array\").that.is.not.empty;",
+              "    const todosPertenecenAlPost1 = comentarios.every(",
+              "        comentario => comentario.postId === 1",
+              "    );",
+              "    pm.expect(todosPertenecenAlPost1).to.be.true;",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/1/comments",
+          "protocol": "https",
+          "host": ["jsonplaceholder", "typicode", "com"],
+          "path": ["posts", "1", "comments"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

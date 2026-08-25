@@ -29,7 +29,7 @@ test.describe('Ejercicio 4 - Integración de posts y comentarios', () => {
     expect(todosPertenecenAlPost1).toBe(true);
 
     // 4. Mostrar una evidencia visual dentro de Playwright UI.
-    await page.setContent(`
+    const paginaResultado = `
       <!doctype html>
       <html lang="es">
         <head>
@@ -54,8 +54,14 @@ test.describe('Ejercicio 4 - Integración de posts y comentarios', () => {
           </main>
         </body>
       </html>
-    `);
+    `;
 
-    if (!process.env.CI) await page.waitForTimeout(3000);
+    await page.goto(
+      `data:text/html;charset=utf-8,${encodeURIComponent(paginaResultado)}`
+    );
+
+    await expect(page.getByText('PRUEBA APROBADA')).toBeVisible();
+
+    if (!process.env.CI) await page.waitForTimeout(5000);
   });
 });

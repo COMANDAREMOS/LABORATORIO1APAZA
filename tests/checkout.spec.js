@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('completar una compra y mostrar el mensaje de confirmación', async ({ page }) => {
+test('Ejercicio 2 - completar una compra y mostrar el mensaje de confirmación', async ({ page }) => {
   const mostrarPaso = async () => {
     if (!process.env.CI) await page.waitForTimeout(1200);
   };

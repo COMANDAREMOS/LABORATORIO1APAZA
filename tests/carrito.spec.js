@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('agregar dos productos, eliminar uno y dejar el contador en 1', async ({ page }) => {
+test('Ejercicio 1 - agregar dos productos, eliminar uno y dejar el contador en 1', async ({ page }) => {
   // En la computadora hace pausas para poder observar la demostración.
   // En GitHub Actions no espera, para que la ejecución siga siendo rápida.
   const mostrarPaso = async () => {

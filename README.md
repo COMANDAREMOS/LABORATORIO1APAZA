@@ -94,6 +94,19 @@ Cada `git push` ejecuta automáticamente, en este orden:
 
 Para comprobarlo, abrir la pestaña **Actions**, seleccionar **Suite de regresión** y entrar en la ejecución más reciente. Los pasos de Playwright y Jest deben aparecer en verde.
 
+## Ejercicio 6 - Flujo funcional completo
+
+Archivo: `tests/ejercicio-6-flujo-funcional.spec.js`.
+
+Incluye el login válido, listado de productos, dos productos en el carrito,
+checkout completo y el caso negativo con `locked_out_user`.
+
+```cmd
+node_modules\.bin\playwright.cmd test ejercicio-6-flujo-funcional.spec.js --headed --workers=1
+```
+
+Resultado esperado: `2 passed`.
+
 ## Ejecutar toda la suite local
 
 ```cmd
